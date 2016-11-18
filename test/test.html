@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Test cross XHR by chrome extension</title>
+	</head>
+	<body>
+		<style>
+		</style>
+
+		<script>
+
+	    var getJson = function(url) {
+	        var event = new CustomEvent('ChromeEvent', { 'detail': url });
+	        document.dispatchEvent(event);
+	    }
+
+			document.addEventListener('ChromeEventResponse',function(data){
+				console.log('response',JSON.parse(data.detail))
+			})
+
+
+	 </script>
+		<a href="javascript:getJson('https://api.github.com/users/mralexgray/repos');">Get data cross domain</a>
+	</body>
+</html>
